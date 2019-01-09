@@ -13,7 +13,7 @@ namespace UANodeServer
     class Program
     {
         static int[] tNodes = new int[] { 2, 8, 4, 6 };
-        static int[] tVars = new int[] { 0, 0, 0, 0 };
+        static int[] tVars = new int[] { 5, 5, 5, 5 };
 
         internal class GettingStartedServerManager : ServerManager
         {
@@ -46,27 +46,7 @@ namespace UANodeServer
                 for (int i = 1; i <= totVarSets; i++)
                 {
                     totNodes++;
-                    string nName = "Property" + "_" + i.ToString();
-                    newNodeId++;
-                    var variableSettings = new CreateVariableSettings()
-                    {
-                        BrowseName = nName,
-                        DisplayName = nName,
-                        ParentNodeId = rootNode,
-                        ParentAsOwner = true,
-                        ReferenceTypeId = UnifiedAutomation.UaBase.ReferenceTypeIds.HasProperty,
-                        TypeDefinitionId = UnifiedAutomation.UaBase.VariableTypeIds.PropertyType,
-                        DataType = UnifiedAutomation.UaBase.DataTypeIds.Argument,
-                        ModellingRuleId = UnifiedAutomation.UaBase.ObjectIds.ModellingRule_Mandatory,
-                        RequestedNodeId = new NodeId(newNodeId, InstanceNamespaceIndex),
-                        Value = new Variant(10.1)
-                    };
-                    CreateVariable(Server.DefaultRequestContext, variableSettings);
-                }
-                for (int i = 1; i <= totVarSets; i++)
-                {
-                    totNodes++;
-                    string nName = "Variable" + "_" + i.ToString();
+                    string nName = "VariableDbl" + "_" + i.ToString();
                     newNodeId++;
                     var variableSettings = new CreateVariableSettings()
                     {
@@ -80,6 +60,97 @@ namespace UANodeServer
                         ModellingRuleId = UnifiedAutomation.UaBase.ObjectIds.ModellingRule_Mandatory,
                         RequestedNodeId = new NodeId(newNodeId, InstanceNamespaceIndex),
                         Value = new Variant(10.1)
+                    };
+                    var v = CreateVariable(Server.DefaultRequestContext, variableSettings);
+
+                    totNodes++;
+                    nName = "unit";
+                    newNodeId++;
+                    variableSettings = new CreateVariableSettings()
+                    {
+                        BrowseName = nName,
+                        DisplayName = nName,
+                        ParentNodeId = v.NodeId,
+                        ParentAsOwner = true,
+                        ReferenceTypeId = UnifiedAutomation.UaBase.ReferenceTypeIds.HasProperty,
+                        TypeDefinitionId = UnifiedAutomation.UaBase.VariableTypeIds.PropertyType,
+                        DataType = UnifiedAutomation.UaBase.DataTypeIds.Argument,
+                        ModellingRuleId = UnifiedAutomation.UaBase.ObjectIds.ModellingRule_Mandatory,
+                        RequestedNodeId = new NodeId(newNodeId, InstanceNamespaceIndex),
+                        Value = new Variant("double")
+                    };
+                    CreateVariable(Server.DefaultRequestContext, variableSettings);
+
+
+                    totNodes++;
+                    nName = "VariableInt" + "_" + i.ToString();
+                    newNodeId++;
+                    variableSettings = new CreateVariableSettings()
+                    {
+                        BrowseName = nName,
+                        DisplayName = nName,
+                        ParentNodeId = rootNode,
+                        ParentAsOwner = true,
+                        ReferenceTypeId = UnifiedAutomation.UaBase.ReferenceTypeIds.HasComponent,
+                        TypeDefinitionId = UnifiedAutomation.UaBase.VariableTypeIds.BaseVariableType,
+                        DataType = UnifiedAutomation.UaBase.DataTypeIds.Argument,
+                        ModellingRuleId = UnifiedAutomation.UaBase.ObjectIds.ModellingRule_Mandatory,
+                        RequestedNodeId = new NodeId(newNodeId, InstanceNamespaceIndex),
+                        Value = new Variant((int)10)
+                    };
+                    v = CreateVariable(Server.DefaultRequestContext, variableSettings);
+
+                    totNodes++;
+                    nName = "unit";
+                    newNodeId++;
+                    variableSettings = new CreateVariableSettings()
+                    {
+                        BrowseName = nName,
+                        DisplayName = nName,
+                        ParentNodeId = v.NodeId,
+                        ParentAsOwner = true,
+                        ReferenceTypeId = UnifiedAutomation.UaBase.ReferenceTypeIds.HasProperty,
+                        TypeDefinitionId = UnifiedAutomation.UaBase.VariableTypeIds.PropertyType,
+                        DataType = UnifiedAutomation.UaBase.DataTypeIds.Argument,
+                        ModellingRuleId = UnifiedAutomation.UaBase.ObjectIds.ModellingRule_Mandatory,
+                        RequestedNodeId = new NodeId(newNodeId, InstanceNamespaceIndex),
+                        Value = new Variant("int")
+                    };
+                    CreateVariable(Server.DefaultRequestContext, variableSettings);
+
+                    totNodes++;
+                    nName = "VariableStr" + "_" + i.ToString();
+                    newNodeId++;
+                    variableSettings = new CreateVariableSettings()
+                    {
+                        BrowseName = nName,
+                        DisplayName = nName,
+                        ParentNodeId = rootNode,
+                        ParentAsOwner = true,
+                        ReferenceTypeId = UnifiedAutomation.UaBase.ReferenceTypeIds.HasComponent,
+                        TypeDefinitionId = UnifiedAutomation.UaBase.VariableTypeIds.BaseVariableType,
+                        DataType = UnifiedAutomation.UaBase.DataTypeIds.Argument,
+                        ModellingRuleId = UnifiedAutomation.UaBase.ObjectIds.ModellingRule_Mandatory,
+                        RequestedNodeId = new NodeId(newNodeId, InstanceNamespaceIndex),
+                        Value = new Variant("10")
+                    };
+                    v = CreateVariable(Server.DefaultRequestContext, variableSettings);
+
+                    totNodes++;
+                    nName = "unit";
+                    newNodeId++;
+                    variableSettings = new CreateVariableSettings()
+                    {
+                        BrowseName = nName,
+                        DisplayName = nName,
+                        ParentNodeId = v.NodeId,
+                        ParentAsOwner = true,
+                        ReferenceTypeId = UnifiedAutomation.UaBase.ReferenceTypeIds.HasProperty,
+                        TypeDefinitionId = UnifiedAutomation.UaBase.VariableTypeIds.PropertyType,
+                        DataType = UnifiedAutomation.UaBase.DataTypeIds.Argument,
+                        ModellingRuleId = UnifiedAutomation.UaBase.ObjectIds.ModellingRule_Mandatory,
+                        RequestedNodeId = new NodeId(newNodeId, InstanceNamespaceIndex),
+                        Value = new Variant("string")
                     };
                     CreateVariable(Server.DefaultRequestContext, variableSettings);
                 }
