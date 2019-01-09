@@ -139,7 +139,7 @@ namespace UANodeServer
                     var gRoot = CreateObject(Server.DefaultRequestContext, settings);
 
 
-                    AddRootNode(gRoot.NodeId, "NODE", tNodes, tVars, 0);
+                    AddRootNode(gRoot.NodeId, "UANode", tNodes, tVars, 0);
 
                     totNodes++;
                     string nName = "Total Nodes";
