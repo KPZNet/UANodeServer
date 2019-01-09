@@ -12,6 +12,9 @@ namespace UANodeServer
 {
     class Program
     {
+        static int[] tNodes = new int[] { 2, 8, 4, 6 };
+        static int[] tVars = new int[] { 0, 0, 0, 0 };
+
         internal class GettingStartedServerManager : ServerManager
         {
             /// [OnRootNodeManagerStarted]
@@ -135,8 +138,7 @@ namespace UANodeServer
                     };
                     var gRoot = CreateObject(Server.DefaultRequestContext, settings);
 
-                    int[] tNodes = new int[] { 2, 8, 6, 4 };
-                    int[] tVars = new int[] { 5, 5, 5, 5 };
+
                     AddRootNode(gRoot.NodeId, "NODE", tNodes, tVars, 0);
 
                     totNodes++;
